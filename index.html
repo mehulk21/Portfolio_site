@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehul Ki Duniya</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -15,7 +14,7 @@
         <div>Mehul Kumar</div>
         <nav>
             <a href="#about">About Me</a>
-            <a href="https://drive.google.com/file/d/1uYQXLbEmbnsxobECSveWVahJ9D4_g2EQ/view?usp=drive_link" target="_blank">Resume/CV</a>
+            <a href="#quiz">Take the Quiz</a>
         </nav>
     </header>
 
@@ -23,26 +22,38 @@
 
     <div class="main">
         <img src="mehull.jpg" alt="Mehul Kumar">
-        <h1> <span id="typed"></span></h1>
-        <p>Explorer | Learner | Creator </p>
+        <h1><span id="typed"></span></h1>
+        <p>Explorer | Learner | Creator</p>
         <a href="#about" class="btn">Learn More About Me</a>
         <div class="social-links">
-            <a href="mailto:agarwalmehul444@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/mehulkumar2108/" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/mehulk21" target="_blank" class="github"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/mehulll_kumar/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+            <!-- Social media links here -->
         </div>
     </div>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>I’m constantly exploring new technologies, learning from every experience, and creating solutions that push boundaries. With a focus on software development, machine learning, and AI, I specialize in building scalable systems and integrating AI-driven technologies to automate processes and improve decision-making. Proficient in Python, C++, SQL, and cloud platforms, I thrive on transforming complex challenges into real-world solutions that make a lasting impact.</p>
+        <p>I’m an Explorer, Learner, and Creator, driven by a passion for designing innovative solutions in software development, machine learning, and AI. With a knack for building scalable systems and leveraging AI to automate processes, I craft solutions that drive efficiency and smarter decision-making. Skilled in Python, C++, SQL, and cloud platforms, I thrive on turning complex challenges into impactful, real-world innovations.</p>
+    </section>
+
+    <section id="quiz">
+        <h2>Let's a play a Quiz</h2>
+        <div id="quiz-container">
+            <p>Answer these questions to earn badges!</p>
+            <div id="question"></div>
+            <div id="choices"></div>
+            <button id="next-btn">Skip</button>
+        </div>
+        <div id="badge-section">
+            <h3>Your Achievements</h3>
+            <p id="badge"></p>
+        </div>
     </section>
 
     <footer>
-        <p>© 2024 Mehul Kumar | All Rights Reserved </p>
+        <p>© 2024 Mehul Kumar | All Rights Reserved</p>
     </footer>
 
+    <script src="quiz.js"></script>
     <script src="particle.js"></script>
 </body>
 </html>
