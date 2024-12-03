@@ -72,7 +72,6 @@ const badgeElement = document.getElementById("badge");
 
 function loadQuestion() {
     if (totalQuestionsAttempted >= maxQuestions) {
-        // If max questions have been attempted, show skipped questions or badge
         if (skippedQuestions.length > 0) {
             showSkippedQuestions();
         } else {
@@ -120,7 +119,7 @@ function showSkippedQuestions() {
         return;
     }
 
-    const skippedQuestion = skippedQuestions.shift(); // Get the next skipped question
+    const skippedQuestion = skippedQuestions.shift(); 
     questionElement.innerHTML = skippedQuestion.question;
     choicesElement.innerHTML = '';
     skippedQuestion.choices.forEach((choice, index) => {
