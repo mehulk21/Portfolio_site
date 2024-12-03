@@ -56,22 +56,46 @@ header a:hover {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
+    text-align: center;
 }
 .btn:hover {
     background-color: #e60000;
 }
-.social-links {
-    margin-top: 20px;
-}
 .social-links a {
+    position: relative;
     display: inline-block;
-    margin: 0 15px;
-    text-decoration: none;
-    color: red;
-    font-size: 24px;
-    transition: color 0.3s;
 }
-.social-links a:hover {
+.social-links a i {
+    font-size: 36px;
+    transition: color 0.3s ease;
+}
+.social-links a:hover i {
+    color: #fff;
+}
+.social-links a:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #fff;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+}
+.social-links a::after {
+    content: '';
+    visibility: hidden;
+    opacity: 0;
+}
+.email {
+    color: red;
+}
+.email:hover i {
     color: white;
 }
 #about {
@@ -83,9 +107,9 @@ header a:hover {
     margin-bottom: 20px;
     text-align: center;
 }
-#about p{
-    color:white;
-    text-decoration:none;
+#about p {
+    color: white;
+    text-decoration: none;
     text-align: center;
 }
 footer {
@@ -98,6 +122,24 @@ footer a {
     color: #ff0000;
     text-decoration: none;
 }
+#start-section button, #choices button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+#start-section button:hover, #choices button:hover {
+    background-color: #e60000;
+}
+
 #quiz-container {
     background-color: #333;
     padding: 20px;
@@ -108,48 +150,56 @@ footer a {
     text-align: center;
     color: #fff;
 }
+
 #quiz-container p {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
 #quiz-container h1 {
     text-align: center;
     font-size: 36px;
     color: #ff0000;
     margin-bottom: 20px;
-    display: block;
-    width: 100%;
 }
+
 #quiz h2 {
-    text-align: center; 
-    color: #ff0000;       
-    font-size: 36px;      
-    margin-bottom: 20px;  
+    text-align: center;
+    color: #ff0000;
+    font-size: 36px;
+    margin-bottom: 20px;
 }
+
 #quiz {
-    text-align: center;   
-    padding: 40px 20px;   
-    background-color: #222; 
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #222;
 }
+
 #choices button {
     background-color: #ff0000;
     color: #fff;
     border: none;
-    padding: 10px;
-    margin: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
+    margin: 5px;
     width: 100%;
     max-width: 200px;
 }
+
 #choices button:hover {
     background-color: #e60000;
 }
+
 #badge-section {
     margin-top: 20px;
     color: #ff0000;
     text-align: center;
 }
+
 #quiz-container, #badge-section {
     margin: 20px auto;
     text-align: center;

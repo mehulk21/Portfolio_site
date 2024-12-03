@@ -66,70 +66,83 @@ let totalQuestionsAttempted = 0;
 const questionElement = document.getElementById("question");
 const choicesElement = document.getElementById("choices");
 const nextBtn = document.getElementById("next-btn");
+const skipBtn = document.getElementById("skip-btn");
 const badgeElement = document.getElementById("badge");
+const thanksElement = document.getElementById("thanks");
+const startElement = document.getElementById("start-section");
 
-function loadQuestion() {
-    if (totalQuestionsAttempted >= 5) {
-        if (skippedQuestions.length > 0) {
-            showSkippedQuestions();
-        } else {
-            showBadge();
-        }
-        return;
-    }
+function showInitialPrompt() {
+    startElement.innerHTML = `
+        <p>Want to play a quiz?</p>
+        <button id="sure-btn">Sure</button>
+        <button id="maybe-btn">Maybe some other day</button>
+    `;
+    
+    document.getElementById("sure-btn").addEventListener("click", () => {
+        startElement.style.display = "none";
+        nextBtn.style.display = "inline-block";
+        skipBtn.style.display = "inline-block";
+        showQuestion();
+    });
 
+    document.getElementById("maybe-btn").addEventListener("click", () => {
+        thanksElement.style.display = "block";
+    });
+}
+
+skipBtn.addEventListener("click", () => {
+    skippedQuestions.push(shuffledQuizData[currentQuestion]);
+    currentQuestion++;
     if (currentQuestion < shuffledQuizData.length) {
-        const currentQuiz = shuffledQuizData[currentQuestion];
-        questionElement.innerHTML = currentQuiz.question;
-        choicesElement.innerHTML = '';
-        currentQuiz.choices.forEach((choice, index) => {
-            const choiceElement = document.createElement("button");
-            choiceElement.classList.add("choice-btn");
-            choiceElement.innerHTML = choice;
-            choiceElement.onclick = () => checkAnswer(index);
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+});
+
+nextBtn.addEventListener("click", () => {
+    totalQuestionsAttempted++;
+    let selectedChoice = document.querySelector('input[name="choices"]:checked');
+    if (selectedChoice && parseInt(selectedChoice.value) === shuffledQuizData[currentQuestion].correct) {
+        score++;
+    }
+    currentQuestion++;
+    if (currentQuestion < shuffledQuizData.length) {
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+});
+
+function showQuestion() {
+    if (currentQuestion < shuffledQuizData.length) {
+        let quizItem = shuffledQuizData[currentQuestion];
+        questionElement.textContent = quizItem.question;
+        choicesElement.innerHTML = "";
+        quizItem.choices.forEach((choice, index) => {
+            let choiceElement = document.createElement("div");
+            choiceElement.innerHTML = `
+                <input type="radio" name="choices" value="${index}">
+                <label>${choice}</label>
+            `;
             choicesElement.appendChild(choiceElement);
         });
     }
 }
 
-function checkAnswer(selectedIndex) {
-    const currentQuiz = shuffledQuizData[currentQuestion];
-    const correctIndex = currentQuiz.correct;
-
-    if (selectedIndex === correctIndex) {
-        score++;
-    }
-
-    totalQuestionsAttempted++;
-    currentQuestion++;
-
-    if (totalQuestionsAttempted < 5) {
-        loadQuestion();
+function endQuiz() {
+    nextBtn.style.display = "none";
+    skipBtn.style.display = "none";
+    let badge = "";
+    if (score / totalQuestionsAttempted >= 0.8) {
+        badge = "🏆 Excellent!";
+    } else if (score / totalQuestionsAttempted >= 0.5) {
+        badge = "✅ Good!";
     } else {
-        if (skippedQuestions.length > 0) {
-            showSkippedQuestions();
-        } else {
-            showBadge();
-        }
+        badge = "⚠️ Try Again!";
     }
+    badgeElement.textContent = `Your score: ${score} out of ${totalQuestionsAttempted} ${badge}`;
+    thanksElement.style.display = "block";
 }
 
-function showBadge() {
-    badgeElement.innerHTML = `Your Score: ${score} out of 5`;
-}
-
-function showSkippedQuestions() {
-    questionElement.innerHTML = "You skipped the following questions:";
-    choicesElement.innerHTML = skippedQuestions.join('<br>');
-}
-
-nextBtn.addEventListener("click", () => {
-    if (currentQuestion < shuffledQuizData.length) {
-        skippedQuestions.push(shuffledQuizData[currentQuestion].question);
-        currentQuestion++;
-        loadQuestion();
-    }
-});
-
-loadQuestion();
-    
+showInitialPrompt();
