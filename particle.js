@@ -1,6 +1,6 @@
 // Typed.js - Dynamic Typing Effect
 var typed = new Typed('#typed', {
-    strings: ["Hello, I'm Mehul", "Glad that you came here :)"], // Updated strings
+    strings: ["Hello, I'm Mehul!", "Glad that you came here :)"], // Updated strings
     typeSpeed: 100,
     backSpeed: 50,
     loop: true // Optional: remove this line if you don't want the text to repeat
