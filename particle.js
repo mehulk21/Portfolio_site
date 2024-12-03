@@ -6,7 +6,6 @@ var typed = new Typed('#typed', {
     loop: true
 });
 
-// Particles.js - Particles Background
 particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
