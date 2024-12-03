@@ -1,3 +1,11 @@
+function shuffleQuestions(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; 
+    }
+    return array;
+}
+
 const quizData = [
     { question: "Which language is used for Machine Learning?", choices: ["Python", "C++", "Java", "PHP"], correct: 0 },
     { question: "Which programming language is primarily used for web development?", choices: ["Python", "Ruby", "JavaScript", "Go"], correct: 2 },
@@ -50,9 +58,12 @@ const quizData = [
     { question: "Which language is primarily used for data analysis?", choices: ["Python", "Java", "Go", "R"], correct: 3 }
 ];
 
+
 let currentQuestion = 0;
 let score = 0;
 let skippedQuestions = [];
+let totalQuestionsAttempted = 0;
+const maxQuestions = quizData.length;
 
 const questionElement = document.getElementById("question");
 const choicesElement = document.getElementById("choices");
@@ -60,6 +71,16 @@ const nextBtn = document.getElementById("next-btn");
 const badgeElement = document.getElementById("badge");
 
 function loadQuestion() {
+    if (totalQuestionsAttempted >= maxQuestions) {
+        // If max questions have been attempted, show skipped questions or badge
+        if (skippedQuestions.length > 0) {
+            showSkippedQuestions();
+        } else {
+            showBadge();
+        }
+        return;
+    }
+
     if (currentQuestion < quizData.length) {
         const currentQuiz = quizData[currentQuestion];
         questionElement.innerHTML = currentQuiz.question;
@@ -70,12 +91,10 @@ function loadQuestion() {
             button.onclick = () => checkAnswer(index);
             choicesElement.appendChild(button);
         });
+    } else if (skippedQuestions.length > 0) {
+        showSkippedQuestions();
     } else {
-        if (skippedQuestions.length > 0) {
-            showSkippedQuestions();
-        } else {
-            showBadge();
-        }
+        showBadge();
     }
 }
 
@@ -83,38 +102,52 @@ function checkAnswer(selectedIndex) {
     if (selectedIndex === quizData[currentQuestion].correct) {
         score++;
     }
+    totalQuestionsAttempted++;
     currentQuestion++;
     loadQuestion();
 }
 
 function skipQuestion() {
     skippedQuestions.push(quizData[currentQuestion]);
+    totalQuestionsAttempted++;
     currentQuestion++;
     loadQuestion();
 }
 
+function showSkippedQuestions() {
+    if (skippedQuestions.length === 0) {
+        showBadge();
+        return;
+    }
+
+    const skippedQuestion = skippedQuestions.shift(); // Get the next skipped question
+    questionElement.innerHTML = skippedQuestion.question;
+    choicesElement.innerHTML = '';
+    skippedQuestion.choices.forEach((choice, index) => {
+        const button = document.createElement('button');
+        button.innerHTML = choice;
+        button.onclick = () => {
+            if (index === skippedQuestion.correct) {
+                score++;
+            }
+            if (skippedQuestions.length > 0) {
+                showSkippedQuestions();
+            } else {
+                showBadge();
+            }
+        };
+        choicesElement.appendChild(button);
+    });
+}
+
 function showBadge() {
-    if (score === quizData.length) {
+    if (score === maxQuestions) {
         badgeElement.innerHTML = "Badge Earned: Quiz Master!";
     } else if (score > 0) {
-        badgeElement.innerHTML = `Badge Earned: Tech Enthusiast! (${score} out of ${quizData.length})`;
+        badgeElement.innerHTML = `Badge Earned: Tech Enthusiast! (${score} out of ${maxQuestions})`;
     } else {
         badgeElement.innerHTML = "Badge Earned: Try Again!";
     }
-}
-
-function showSkippedQuestions() {
-    let skippedContent = "<h3>Skipped Questions:</h3>";
-    skippedQuestions.forEach((question, index) => {
-        skippedContent += `<p><strong>Q${index + 1}:</strong> ${question.question}</p>`;
-        skippedContent += `<ul>`;
-        question.choices.forEach(choice => {
-            skippedContent += `<li>${choice}</li>`;
-        });
-        skippedContent += `</ul>`;
-    });
-    questionElement.innerHTML = skippedContent;
-    choicesElement.innerHTML = '';
 }
 
 nextBtn.addEventListener("click", skipQuestion);
