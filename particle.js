@@ -1,10 +1,11 @@
 // Typed.js - Dynamic Typing Effect
 var typed = new Typed('#typed', {
-    strings: ["Mehul Kumar", "a Developer", "an AI Enthusiast", "a Problem Solver"],
+    strings: ["Hello, I'm Mehul", "Glad that you came here :)"], // Updated strings
     typeSpeed: 100,
     backSpeed: 50,
-    loop: true
+    loop: true // Optional: remove this line if you don't want the text to repeat
 });
+
 
 particlesJS('particles-js', {
     particles: {
