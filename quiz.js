@@ -1,13 +1,12 @@
 function shuffleQuestions(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; 
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
 
 const quizData = [
-    { question: "Which language is used for Machine Learning?", choices: ["Python", "C++", "Java", "PHP"], correct: 0 },
     { question: "Which programming language is primarily used for web development?", choices: ["Python", "Ruby", "JavaScript", "Go"], correct: 2 },
     { question: "What is AI short for?", choices: ["Artificial Intelligence", "Automated Intelligence", "Artificial Integration", "Automatic Integration"], correct: 0 },
     { question: "What does SQL stand for?", choices: ["Structured Query Language", "Simple Query Language", "Secure Query Language", "Structured Quick Language"], correct: 0 },
@@ -58,12 +57,11 @@ const quizData = [
     { question: "Which language is primarily used for data analysis?", choices: ["Python", "Java", "Go", "R"], correct: 3 }
 ];
 
-
+let shuffledQuizData = shuffleQuestions([...quizData]).slice(0, 5);
 let currentQuestion = 0;
 let score = 0;
 let skippedQuestions = [];
 let totalQuestionsAttempted = 0;
-const maxQuestions = quizData.length;
 
 const questionElement = document.getElementById("question");
 const choicesElement = document.getElementById("choices");
@@ -71,7 +69,7 @@ const nextBtn = document.getElementById("next-btn");
 const badgeElement = document.getElementById("badge");
 
 function loadQuestion() {
-    if (totalQuestionsAttempted >= maxQuestions) {
+    if (totalQuestionsAttempted >= 5) {
         if (skippedQuestions.length > 0) {
             showSkippedQuestions();
         } else {
@@ -80,75 +78,58 @@ function loadQuestion() {
         return;
     }
 
-    if (currentQuestion < quizData.length) {
-        const currentQuiz = quizData[currentQuestion];
+    if (currentQuestion < shuffledQuizData.length) {
+        const currentQuiz = shuffledQuizData[currentQuestion];
         questionElement.innerHTML = currentQuiz.question;
         choicesElement.innerHTML = '';
         currentQuiz.choices.forEach((choice, index) => {
-            const button = document.createElement('button');
-            button.innerHTML = choice;
-            button.onclick = () => checkAnswer(index);
-            choicesElement.appendChild(button);
+            const choiceElement = document.createElement("button");
+            choiceElement.classList.add("choice-btn");
+            choiceElement.innerHTML = choice;
+            choiceElement.onclick = () => checkAnswer(index);
+            choicesElement.appendChild(choiceElement);
         });
-    } else if (skippedQuestions.length > 0) {
-        showSkippedQuestions();
-    } else {
-        showBadge();
     }
 }
 
 function checkAnswer(selectedIndex) {
-    if (selectedIndex === quizData[currentQuestion].correct) {
+    const currentQuiz = shuffledQuizData[currentQuestion];
+    const correctIndex = currentQuiz.correct;
+
+    if (selectedIndex === correctIndex) {
         score++;
     }
+
     totalQuestionsAttempted++;
     currentQuestion++;
-    loadQuestion();
-}
 
-function skipQuestion() {
-    skippedQuestions.push(quizData[currentQuestion]);
-    totalQuestionsAttempted++;
-    currentQuestion++;
-    loadQuestion();
-}
-
-function showSkippedQuestions() {
-    if (skippedQuestions.length === 0) {
-        showBadge();
-        return;
+    if (totalQuestionsAttempted < 5) {
+        loadQuestion();
+    } else {
+        if (skippedQuestions.length > 0) {
+            showSkippedQuestions();
+        } else {
+            showBadge();
+        }
     }
-
-    const skippedQuestion = skippedQuestions.shift(); 
-    questionElement.innerHTML = skippedQuestion.question;
-    choicesElement.innerHTML = '';
-    skippedQuestion.choices.forEach((choice, index) => {
-        const button = document.createElement('button');
-        button.innerHTML = choice;
-        button.onclick = () => {
-            if (index === skippedQuestion.correct) {
-                score++;
-            }
-            if (skippedQuestions.length > 0) {
-                showSkippedQuestions();
-            } else {
-                showBadge();
-            }
-        };
-        choicesElement.appendChild(button);
-    });
 }
 
 function showBadge() {
-    if (score === maxQuestions) {
-        badgeElement.innerHTML = "Badge Earned: Quiz Master!";
-    } else if (score > 0) {
-        badgeElement.innerHTML = `Badge Earned: Tech Enthusiast! (${score} out of ${maxQuestions})`;
-    } else {
-        badgeElement.innerHTML = "Badge Earned: Try Again!";
-    }
+    badgeElement.innerHTML = `Your Score: ${score} out of 5`;
 }
 
-nextBtn.addEventListener("click", skipQuestion);
+function showSkippedQuestions() {
+    questionElement.innerHTML = "You skipped the following questions:";
+    choicesElement.innerHTML = skippedQuestions.join('<br>');
+}
+
+nextBtn.addEventListener("click", () => {
+    if (currentQuestion < shuffledQuizData.length) {
+        skippedQuestions.push(shuffledQuizData[currentQuestion].question);
+        currentQuestion++;
+        loadQuestion();
+    }
+});
 
 loadQuestion();
+    
