@@ -61,17 +61,24 @@ header a:hover {
 .btn:hover {
     background-color: #e60000;
 }
+.social-links {
+    margin-top: 20px; 
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+}
+
 .social-links a {
-    position: relative;
-    display: inline-block;
+    color: red;
+    font-size: 30px; 
+    transition: transform 0.3s ease;
 }
-.social-links a i {
-    font-size: 36px;
-    transition: color 0.3s ease;
+
+.social-links a:hover {
+    transform: scale(1.2);
+    color: white; 
 }
-.social-links a:hover i {
-    color: #fff;
-}
+
 .social-links a:hover::after {
     content: attr(title);
     position: absolute;
