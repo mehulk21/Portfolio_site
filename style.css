@@ -240,13 +240,48 @@ html {
 }
 
 
+/* Hide dropdown menu by default */
+#dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+/* Show menu when toggled */
+#dropdown-menu.show {
+    display: block;
+}
+
+/* Dropdown menu links styling */
 #dropdown-menu a {
-    color: #ff0000; 
-    text-decoration: none; 
+    display: block;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
 }
 
 #dropdown-menu a:hover {
-    background: none; 
-    color: none;
-    text-decoration: underline
+    text-decoration: underline;
 }
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 4px;
+    width: 100%;
+    background-color: #ff0000;
+    border-radius: 2px;
+}
+
