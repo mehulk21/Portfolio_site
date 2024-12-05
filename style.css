@@ -1,24 +1,29 @@
+/* Reset and Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background: linear-gradient(to bottom, #D4D8DC, #222222);
     color: #fff;
     overflow-x: hidden;
 }
+
+/* Header Styles */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: linear-gradient(to bottom, #D4D8DC, #222222);
+    background: transparent;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
+
 header a {
     color: #ff0000;
     text-decoration: none;
@@ -26,31 +31,41 @@ header a {
     margin: 0 15px;
     transition: color 0.3s ease;
 }
+
 header a:hover {
     text-decoration: underline;
 }
+
+/* Main Section */
 .main {
     text-align: center;
     padding: 100px 20px;
+    background: transparent;
 }
+
 .main img {
     width: 200px;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
 }
+
 .main img:hover {
     transform: scale(1.1);
 }
+
 .main h1 {
     font-size: 48px;
     margin: 20px 0;
     color: #ff0000;
 }
+
 .main p {
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto 30px;
+    color: #fff;
 }
+
 .btn {
     background-color: #ff0000;
     color: #fff;
@@ -58,11 +73,15 @@ header a:hover {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
-    text-align: center;
+    display: inline-block;
+    transition: background 0.3s ease;
 }
+
 .btn:hover {
     background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
+
+/* Social Links */
 .social-links {
     position: relative;
     margin-top: 20px;
@@ -72,102 +91,95 @@ header a:hover {
 }
 
 .social-links a {
-    color: red;
+    color: #ff0000;
     font-size: 30px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
     position: relative;
+    text-align: center;
 }
 
 .social-links a:hover {
     transform: scale(1.2);
-    color: white;
+    color: #fff;
 }
 
-/* Tooltip styles */
+/* Tooltip Styles */
 .social-links a::after {
-    content: attr(title); /* Use the title attribute */
+    content: attr(title);
     position: absolute;
-    bottom: -35px; /* Position below the icon */
+    bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
-    color: #fff; /* Text color */
-    background-color: linear-gradient(to bottom, #D4D8DC, #222222); 
+    color: #fff;
+    background: #222222;
     padding: 5px 10px;
     border-radius: 5px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .social-links a:hover::after {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(-5px); 
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .email {
-    color: red;
+    color: #ff0000;
 }
+
 .email:hover i {
     color: white;
 }
+
+/* About Section */
 #about {
+    position: relative;
+    z-index: 2;
     padding: 100px 20px;
-    background: #111;
+    text-align: center;
 }
+
 #about h2 {
     color: #ff0000;
     margin-bottom: 20px;
+}
+
+#about p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Quiz Section */
+#quiz {
+    padding: 100px 20px;
     text-align: center;
 }
-#about p {
-    color: white;
-    text-decoration: none;
-    text-align: center;
+
+#quiz h2 {
+    color: #ff0000;
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
 .quiz-clock {
-    width: 36px; 
-    height: 36px; 
+    width: 36px;
+    height: 36px;
     vertical-align: middle;
-    margin-left: 10px; 
-    border: none; 
-    background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);    border-radius: 50%; 
-}
-
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    margin-top: 50px;
-}
-footer a {
-    color: #ff0000;
-    text-decoration: none;
-}
-#start-section button, #choices button {
-    background-color: #ff0000;
-    color: #fff;
+    margin-left: 10px;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    margin: 5px;
-    width: 100%;
-    max-width: 200px;
-}
-
-#start-section button:hover, #choices button:hover {
-    background-color: #e60000;
+    background: transparent;
+    border-radius: 50%;
 }
 
 #quiz-container {
-    background-color: #333;
+    background: transparent;
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
@@ -182,49 +194,48 @@ footer a {
     margin-bottom: 10px;
 }
 
-#quiz-container h1 {
-    text-align: center;
-    font-size: 36px;
-    color: #ff0000;
-    margin-bottom: 20px;
-}
-
-#quiz h2 {
-    text-align: center;
-    color: #ff0000;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-#quiz {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #222;
-}
-
+#start-section button,
 #choices button {
     background-color: #ff0000;
     color: #fff;
     border: none;
-    padding: 10px;
-    margin: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
+    margin: 5px;
     width: 100%;
     max-width: 200px;
 }
+
+#start-section button:hover,
 #choices button:hover {
     background-color: #e60000;
 }
 
-#badge-section {
-    margin-top: 20px;
-    color: #ff0000;
+/* Footer Section */
+footer {
     text-align: center;
+    padding: 20px;
+    background: transparent;
+    margin-top: 50px;
 }
 
-#quiz-container, #badge-section {
-    margin: 20px auto;
-    text-align: center;
-    max-width: 600px;
+footer p {
+    color: #ff0000;
+    font-size: 16px;
+}
+
+/* Particles.js */
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    pointer-events: none; /* Ensures it doesn't block interactions */
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
 }
