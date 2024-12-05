@@ -232,10 +232,21 @@ footer p {
     height: 100%;
     width: 100%;
     z-index: 0;
-    pointer-events: none; /* Ensures it doesn't block interactions */
+    pointer-events: none; 
 }
 
-/* Smooth Scroll */
 html {
     scroll-behavior: smooth;
+}
+
+
+#dropdown-menu a {
+    color: #ff0000; 
+    text-decoration: none; 
+}
+
+#dropdown-menu a:hover {
+    background: none; 
+    color: none;
+    text-decoration: underline
 }

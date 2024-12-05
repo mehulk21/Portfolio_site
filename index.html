@@ -12,12 +12,25 @@
 </head>
 <body>
     <header>
-        <div>Mehul Kumar</div>
-        <nav>
-            <a href="mailto:agarwalmehul444@gmail.com" target="_blank">Contact Me</a> 
-            <a href="https://drive.google.com/file/d/1uYQXLbEmbnsxobECSveWVahJ9D4_g2EQ/view?usp=sharing" target="_blank">Resume/CV</a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav id="dropdown-menu">
+            <div class="dropdown-content">
+                <a href="#hobbies">Hobbies</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#skills">Skills</a>
+                <a href="https://drive.google.com/drive/folders/1pSsorIlI4NXEacQNv5fcDPkj8VvTifsa?usp=sharing" target="_blank" rel="noopener noreferrer">Achievements</a>
+            </div>
         </nav>
+        <div class="header-links">
+            <a href="https://drive.google.com/file/d/1uYQXLbEmbnsxobECSveWVahJ9D4_g2EQ/view?usp=sharing" target="_blank">Resume/CV</a>
+            <a href="mailto:agarwalmehul444@gmail.com" target="_blank">Contact Me</a>
+        </div>
     </header>
+    
 
     <div id="particles-js" style="height:100%;width:100%;position:absolute;top:0;left:0;"></div>
 
@@ -33,10 +46,12 @@
             <a href="https://www.instagram.com/mehulll_kumar/" target="_blank" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>                
     </div>
+
     <section id="about">
         <h2>About Me</h2>
         <p>A student driven by a passion for designing innovative solutions in software development, machine learning, and AI. With a knack for building scalable systems and leveraging AI to automate processes, I craft solutions that drive efficiency and smarter decision-making. Skilled in Python, C++, SQL, and cloud platforms, I thrive on turning complex challenges into impactful, real-world innovations.</p>
     </section>
+
     <!-- Quiz Section -->
     <section id="quiz">
         <h2>
@@ -57,11 +72,13 @@
         </div>
         <div id="thanks" style="display:none;">Thank you for taking out some time!</div>
     </section>    
+
     <footer>
-        <p>© 2024 Mehul Kumar | All Rights Reserved</p>
+        <p>©  Mehul Kumar | All Rights Reserved</p>
     </footer>
 
     <script src="quiz.js"></script>
     <script src="particle.js"></script>
+    <script src="toggle.js"></script>
 </body>
 </html>
