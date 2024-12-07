@@ -267,6 +267,7 @@ html {
 
 #dropdown-menu a:hover {
     text-decoration: underline;
+    color: #f70707;
 }
 
 .menu-toggle {

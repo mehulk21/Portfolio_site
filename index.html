@@ -30,10 +30,7 @@
             <a href="mailto:agarwalmehul444@gmail.com" target="_blank">Contact Me</a>
         </div>
     </header>
-    
-
     <div id="particles-js" style="height:100%;width:100%;position:absolute;top:0;left:0;"></div>
-
     <div class="main">
         <img src="mehull.jpg" alt="Mehul Kumar">
         <h1><span id="typed"></span></h1>
@@ -51,8 +48,6 @@
         <h2>About Me</h2>
         <p>A student driven by a passion for designing innovative solutions in software development, machine learning, and AI. With a knack for building scalable systems and leveraging AI to automate processes, I craft solutions that drive efficiency and smarter decision-making. Skilled in Python, C++, SQL, and cloud platforms, I thrive on turning complex challenges into impactful, real-world innovations.</p>
     </section>
-
-    <!-- Quiz Section -->
     <section id="quiz">
         <h2>
             Quiz Time!!
@@ -72,13 +67,46 @@
         </div>
         <div id="thanks" style="display:none;">Thank you for taking out some time!</div>
     </section>    
-
     <footer>
         <p>©  Mehul Kumar | All Rights Reserved</p>
     </footer>
-
     <script src="quiz.js"></script>
     <script src="particle.js"></script>
     <script src="path/to/toggle.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const dropdownMenu = document.querySelector("#dropdown-menu");
+            let hideTimeout;
+            menuToggle.addEventListener("click", () => {
+                dropdownMenu.classList.toggle("show");
+                clearTimeout(hideTimeout); 
+            });
+            menuToggle.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.classList.remove("show");
+                }, 100); 
+            });
+    
+            dropdownMenu.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    dropdownMenu.classList.remove("show");
+                }, 200); 
+            });
+            dropdownMenu.addEventListener("mouseover", () => {
+                clearTimeout(hideTimeout); 
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.scrollTo(0, 0); 
+        });
+    </script>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual'; 
+        }
+    </script>       
 </body>
 </html>
