@@ -4,15 +4,17 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #D4D8DC, #222222);
+    background-image: linear-gradient(to left, #d4d8dc, #b0b2b5, #8c8e90, #6a6b6d, #4a4a4b, #4d4854, #554559, #623f59, #a65068, #e26a5d, #ff993d, #ffd700);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
     color: #fff;
     overflow-x: hidden;
 }
-
-/* Header Styles */
 header {
     display: flex;
     justify-content: space-between;
@@ -23,51 +25,42 @@ header {
     top: 0;
     z-index: 1000;
 }
-
 header a {
-    color: #ff0000;
+    color: #112A46;
     text-decoration: none;
     font-size: 18px;
     margin: 0 15px;
     transition: color 0.3s ease;
 }
-
 header a:hover {
     text-decoration: underline;
 }
-
-/* Main Section */
 .main {
     text-align: center;
     padding: 100px 20px;
     background: transparent;
 }
-
 .main img {
     width: 200px;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
 }
-
 .main img:hover {
     transform: scale(1.1);
 }
-
 .main h1 {
     font-size: 48px;
     margin: 20px 0;
-    color: #ff0000;
+    color: #112A46;
 }
-
 .main p {
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto 30px;
     color: #fff;
 }
-
 .btn {
-    background-color: #ff0000;
+    background-color: #112A46;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -76,12 +69,9 @@ header a:hover {
     display: inline-block;
     transition: background 0.3s ease;
 }
-
 .btn:hover {
     background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
-
-/* Social Links */
 .social-links {
     position: relative;
     margin-top: 20px;
@@ -89,21 +79,17 @@ header a:hover {
     justify-content: center;
     gap: 20px;
 }
-
 .social-links a {
-    color: #ff0000;
+    color: #112A46;
     font-size: 30px;
     transition: transform 0.3s ease, color 0.3s ease;
     position: relative;
     text-align: center;
 }
-
 .social-links a:hover {
     transform: scale(1.2);
     color: #fff;
 }
-
-/* Tooltip Styles */
 .social-links a::after {
     content: attr(title);
     position: absolute;
@@ -120,34 +106,27 @@ header a:hover {
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
 }
-
 .social-links a:hover::after {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(-5px);
 }
-
 .email {
-    color: #ff0000;
+    color: #112A46;
 }
-
 .email:hover i {
     color: white;
 }
-
-/* About Section */
 #about {
     position: relative;
     z-index: 2;
     padding: 100px 20px;
     text-align: center;
 }
-
 #about h2 {
-    color: #ff0000;
+    color: #112A46;
     margin-bottom: 20px;
 }
-
 #about p {
     color: #fff;
     font-size: 18px;
@@ -155,19 +134,15 @@ header a:hover {
     max-width: 800px;
     margin: 0 auto;
 }
-
-/* Quiz Section */
 #quiz {
     padding: 100px 20px;
     text-align: center;
 }
-
 #quiz h2 {
-    color: #ff0000;
+    color: #112A46;
     font-size: 36px;
     margin-bottom: 20px;
 }
-
 .quiz-clock {
     width: 36px;
     height: 36px;
@@ -177,7 +152,6 @@ header a:hover {
     background: transparent;
     border-radius: 50%;
 }
-
 #quiz-container {
     background: transparent;
     padding: 20px;
@@ -188,15 +162,13 @@ header a:hover {
     text-align: center;
     color: #fff;
 }
-
 #quiz-container p {
     font-size: 20px;
     margin-bottom: 10px;
 }
-
 #start-section button,
 #choices button {
-    background-color: #ff0000;
+    background-color: #112A46;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -207,26 +179,20 @@ header a:hover {
     width: 100%;
     max-width: 200px;
 }
-
 #start-section button:hover,
 #choices button:hover {
-    background-color: #e60000;
+    background-color: #0f1d2b;
 }
-
-/* Footer Section */
 footer {
     text-align: center;
     padding: 20px;
     background: transparent;
     margin-top: 50px;
 }
-
 footer p {
-    color: #ff0000;
+    color: #112A46;
     font-size: 16px;
 }
-
-/* Particles.js */
 #particles-js {
     position: absolute;
     height: 100%;
@@ -234,13 +200,9 @@ footer p {
     z-index: 0;
     pointer-events: none; 
 }
-
 html {
     scroll-behavior: smooth;
 }
-
-
-/* Hide dropdown menu by default */
 #dropdown-menu {
     display: none;
     position: absolute;
@@ -251,25 +213,19 @@ html {
     border-radius: 5px;
     z-index: 999;
 }
-
-/* Show menu when toggled */
 #dropdown-menu.show {
     display: block;
 }
-
-/* Dropdown menu links styling */
 #dropdown-menu a {
     display: block;
     margin: 10px 0;
     color: #fff;
     text-decoration: none;
 }
-
 #dropdown-menu a:hover {
     text-decoration: underline;
     color: #f70707;
 }
-
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -278,11 +234,22 @@ html {
     height: 20px;
     cursor: pointer;
 }
-
 .menu-toggle .bar {
     height: 4px;
     width: 100%;
-    background-color: #ff0000;
+    background-color: #112A46;
     border-radius: 2px;
 }
-
+#particles-js {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none;
+}
+.main {
+    position: relative;
+    z-index: 2;
+}
