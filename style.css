@@ -322,3 +322,61 @@ html {
     position: relative;
     z-index: 2;
 }
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #222;
+}
+header nav {
+    display: flex;
+    justify-content: center;
+    background-color: #222;
+    padding: 10px 0;
+}
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+header nav a.active {
+    text-decoration: underline;
+}
+header nav a:hover {
+    color: #f70707;
+}
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #112A46;
+}
+.case-study {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.case-study h2 {
+    color: #112A46;
+    margin-bottom: 10px;
+}
+.case-study a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+.case-study a:hover {
+    text-decoration: underline;
+}
