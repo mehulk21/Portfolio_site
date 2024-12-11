@@ -15,6 +15,20 @@ body {
     color: #fff;
     overflow-x: hidden;
 }
+.btn, .choice-btn {
+    background-color: #112A46;
+    color: #112A46;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+    margin: 10px 0;
+}
+.btn:hover, .choice-btn:hover {
+    background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -131,8 +145,12 @@ header a:hover {
     color: #fff;
     font-size: 18px;
     line-height: 1.5;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    margin-bottom: 15px;
+}
+#about p:last-of-type {
+    margin-top: 20px;
 }
 #quiz {
     padding: 100px 20px;
@@ -153,35 +171,84 @@ header a:hover {
     border-radius: 50%;
 }
 #quiz-container {
-    background: transparent;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 500px;
-    text-align: center;
-    color: #fff;
-}
-#quiz-container p {
     font-size: 20px;
+    text-align: center;
+    padding: 20px;
     margin-bottom: 10px;
 }
-#start-section button,
-#choices button {
-    background-color: #112A46;
-    color: #fff;
-    border: none;
+#sure-btn  {
+    margin-top: 20px;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
     border-radius: 5px;
-    margin: 5px;
-    width: 100%;
-    max-width: 200px;
 }
-#start-section button:hover,
+#sure-btn:hover {
+    background-color: #45a049;
+}
+#maybesomeotherday-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+#maybesomeotherday-btn:hover {
+    background-color: #45a049;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+button:hover {
+    background-color: #45a049;
+}
+#choices button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #112A46;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 #choices button:hover {
     background-color: #0f1d2b;
+}
+#next-btn, #skip-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+#next-btn:hover, #skip-btn:hover {
+    background-color: #45a049;
+}
+#badge-section {
+    text-align: center;
+}
+.quiz-clock {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 footer {
     text-align: center;

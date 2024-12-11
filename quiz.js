@@ -89,7 +89,6 @@ function showInitialPrompt() {
         thanksElement.style.display = "block";
     });
 }
-
 skipBtn.addEventListener("click", () => {
     skippedQuestions.push(shuffledQuizData[currentQuestion]);
     currentQuestion++;
@@ -99,7 +98,6 @@ skipBtn.addEventListener("click", () => {
         endQuiz();
     }
 });
-
 nextBtn.addEventListener("click", () => {
     totalQuestionsAttempted++;
     let selectedChoice = document.querySelector('input[name="choices"]:checked');
@@ -113,7 +111,6 @@ nextBtn.addEventListener("click", () => {
         endQuiz();
     }
 });
-
 function showQuestion() {
     if (currentQuestion < shuffledQuizData.length) {
         let quizItem = shuffledQuizData[currentQuestion];
@@ -122,14 +119,27 @@ function showQuestion() {
         quizItem.choices.forEach((choice, index) => {
             let choiceElement = document.createElement("div");
             choiceElement.innerHTML = `
-                <input type="radio" name="choices" value="${index}">
-                <label>${choice}</label>
+                <button type="button" class="btn choice-btn" data-value="${index}">${choice}</button>
             `;
             choicesElement.appendChild(choiceElement);
         });
+        document.querySelectorAll('.choice-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                let selectedChoice = this.getAttribute('data-value');
+                if (parseInt(selectedChoice) === quizItem.correct) {
+                    score++;
+                }
+                totalQuestionsAttempted++;
+                currentQuestion++;
+                if (currentQuestion < shuffledQuizData.length) {
+                    showQuestion();
+                } else {
+                    endQuiz();
+                }
+            });
+        });
     }
 }
-
 function endQuiz() {
     nextBtn.style.display = "none";
     skipBtn.style.display = "none";
