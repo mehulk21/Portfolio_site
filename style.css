@@ -262,9 +262,11 @@ footer p {
 }
 #particles-js {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    top:0;
+    left:0;
     pointer-events: none; 
 }
 html {
