@@ -144,15 +144,11 @@ function endQuiz() {
     nextBtn.style.display = "none";
     skipBtn.style.display = "none";
     let badge = "";
-    if (score / totalQuestionsAttempted >= 0.8) {
-        badge = "🏆 Excellent!";
-    } else if (score / totalQuestionsAttempted >= 0.5) {
-        badge = "✅ Good!";
-    } else {
-        badge = "⚠️ Try Again!";
-    }
+    if (score / totalQuestionsAttempted >= 0.8) badge = "🏆 Excellent!";  
+    else if (score / totalQuestionsAttempted >= 0.5) badge = "✅ Good!"; 
+    else badge = "😐 Not Bad!";
+    
     badgeElement.textContent = `Your score: ${score} out of ${totalQuestionsAttempted} ${badge}`;
     thanksElement.style.display = "block";
 }
-
 showInitialPrompt();
