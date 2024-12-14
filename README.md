@@ -50,7 +50,7 @@ MehulKiDuniya/
 ---
 
 ## 🌐 Live Preview
-Visit the live website here: (https://mehulk21.github.io/mehulkumar/)
+Visit the live website here: https://mehulk21.github.io/mehulkumar/
 
 ---
 
